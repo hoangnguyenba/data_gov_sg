@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('App\Services\DataGov\PullDataService', 'App\Services\DataGov\Api\PullDataServiceApi');
+        if (config('data-gov.source') == 'API') {
+            $this->app->singleton('App\Services\DataGov\PullDataService', 'App\Services\DataGov\Api\PullDataServiceApi');
+        } else {
+            $this->app->singleton('App\Services\DataGov\PullDataService', 'App\Services\DataGov\File\PullDataServiceFile');
+        }
     }
 
     /**
