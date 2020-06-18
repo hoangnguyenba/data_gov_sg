@@ -32,3 +32,7 @@ php artisan pull-data-air-temp
 php artisan serve
 ```
 then check your website, it should show current psi data
+
+### Pull data from flat file
+You can change the resource and the file path in config/data-gov.php 
+By default, it will get the file in format DDMMYYYY.json
