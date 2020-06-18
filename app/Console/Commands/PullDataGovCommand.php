@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Services\DataGov\PullDataService;
 use App\Models\PSI;
+use App\Models\AirTemperature;
 use Carbon\Carbon;
 
 class PullDataGovCommand extends Command
@@ -44,6 +45,7 @@ class PullDataGovCommand extends Command
     public function handle()
     {
         $this->_fetchAndStorePSI();
+        $this->_fetchAndStoreAirTemperature();
     }
 
     /**
@@ -80,6 +82,31 @@ class PullDataGovCommand extends Command
                         ]
                     );
                 }
+            }
+        }
+    }
+
+    /**
+     * Fetch data Air Temperature and store in DB
+     *
+     * @return void
+     */
+    public function _fetchAndStoreAirTemperature() {
+        $dataAT = $this->pullDataService->fetchAirTemperature();
+
+        $items = $dataAT['items'];
+        foreach ($items as $item) {
+            $readings = $item['readings'];
+            foreach ($readings as $at) {
+                AirTemperature::updateOrCreate(
+                    [
+                        'timestamp' => new Carbon($item['timestamp']),
+                        'station_id' => $at['station_id'],
+                    ],
+                    [
+                        'value' => $at['value'],
+                    ]
+                );
             }
         }
     }

@@ -16,6 +16,7 @@ class PullDataServiceApi implements PullDataService {
     }
 
     public function fetchAirTemperature() {
-
+        $res = Http::get(PullDataServiceApi::BASE_URL . PullDataServiceApi::AIR_TEMPERATURE_ROUTE);
+        return $res->json();
     }
 }
