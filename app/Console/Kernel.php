@@ -25,6 +25,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // Run hourly from 8 AM to 5 PM on weekdays...
+        $schedule->command('pull-data-psi')->everyFiveMinutes();
+        $schedule->command('pull-data-air-temp')->everyMinute();
     }
 
     /**
