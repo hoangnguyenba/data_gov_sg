@@ -1,0 +1,44 @@
+[
+    {
+        "name": "west",
+        "label_location": {
+            "latitude": 1.35735,
+            "longitude": 103.7
+        }
+    },
+    {
+        "name": "national",
+        "label_location": {
+            "latitude": 0,
+            "longitude": 0
+        }
+    },
+    {
+        "name": "east",
+        "label_location": {
+            "latitude": 1.35735,
+            "longitude": 103.94
+        }
+    },
+    {
+        "name": "central",
+        "label_location": {
+            "latitude": 1.35735,
+            "longitude": 103.82
+        }
+    },
+    {
+        "name": "south",
+        "label_location": {
+            "latitude": 1.29587,
+            "longitude": 103.82
+        }
+    },
+    {
+        "name": "north",
+        "label_location": {
+            "latitude": 1.41803,
+            "longitude": 103.82
+        }
+    }
+]
