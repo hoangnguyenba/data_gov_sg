@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Services\DataGov\PullDataService;
 use App\Models\PSI;
-use App\Models\AirTemperature;
+use App\Models\LastUpdate;
 use Carbon\Carbon;
 
 class PullDataPSICommand extends Command
@@ -66,6 +66,16 @@ class PullDataPSICommand extends Command
         ];
 
         $psis = $dataPSI['items'];
+        // Update last time
+        LastUpdate::updateOrCreate(
+            [
+                'type' => LastUpdate::PSIType,
+            ],
+            [
+                'time' => new Carbon($psis[0]['timestamp']),
+            ]
+        );
+
         foreach ($psis as $psi) {
             foreach ($types as $type) {
                 foreach($regionNames as $regionName) {

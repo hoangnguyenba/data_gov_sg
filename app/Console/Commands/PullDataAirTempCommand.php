@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Services\DataGov\PullDataService;
-use App\Models\PSI;
+use App\Models\LastUpdate;
 use App\Models\AirTemperature;
 use Carbon\Carbon;
 
@@ -56,6 +56,16 @@ class PullDataAirTempCommand extends Command
         $dataAT = $this->pullDataService->fetchAirTemperature();
 
         $items = $dataAT['items'];
+        // Update last time
+        LastUpdate::updateOrCreate(
+            [
+                'type' => LastUpdate::AirTempType,
+            ],
+            [
+                'time' => new Carbon($items[0]['timestamp']),
+            ]
+        );
+
         foreach ($items as $item) {
             $readings = $item['readings'];
             foreach ($readings as $at) {
