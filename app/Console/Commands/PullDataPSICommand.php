@@ -8,21 +8,21 @@ use App\Models\PSI;
 use App\Models\AirTemperature;
 use Carbon\Carbon;
 
-class PullDataGovCommand extends Command
+class PullDataPSICommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'pull-data';
+    protected $signature = 'pull-data-psi';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Pull data from data.gov.sg';
+    protected $description = 'Pull data psi from data.gov.sg';
 
     protected $pullDataService;
 
@@ -45,7 +45,6 @@ class PullDataGovCommand extends Command
     public function handle()
     {
         $this->_fetchAndStorePSI();
-        $this->_fetchAndStoreAirTemperature();
     }
 
     /**
@@ -82,31 +81,6 @@ class PullDataGovCommand extends Command
                         ]
                     );
                 }
-            }
-        }
-    }
-
-    /**
-     * Fetch data Air Temperature and store in DB
-     *
-     * @return void
-     */
-    public function _fetchAndStoreAirTemperature() {
-        $dataAT = $this->pullDataService->fetchAirTemperature();
-
-        $items = $dataAT['items'];
-        foreach ($items as $item) {
-            $readings = $item['readings'];
-            foreach ($readings as $at) {
-                AirTemperature::updateOrCreate(
-                    [
-                        'timestamp' => new Carbon($item['timestamp']),
-                        'station_id' => $at['station_id'],
-                    ],
-                    [
-                        'value' => $at['value'],
-                    ]
-                );
             }
         }
     }
