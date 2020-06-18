@@ -59,7 +59,7 @@
                                   <td>S)2 Sub Index</td>
                                 </tr>
                               </thead>
-                              <tbody>
+                              <tbody id="psiTableBody">
                                 <tr class="alert">
                                   <td>National</td>
                                   <td>26</td>
