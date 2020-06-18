@@ -15,7 +15,7 @@ class CreatePSISTable extends Migration
     {
         Schema::create('psis', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('timestamp');
+            $table->timestamp('timestamp')->useCurrent();
             $table->timestamp('update_timestamp')->useCurrent();
             $table->string('type');
             $table->string('region');
