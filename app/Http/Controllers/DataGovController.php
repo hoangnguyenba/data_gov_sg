@@ -21,7 +21,7 @@ class DataGovController extends Controller
 
     function getFullData() {
         return response()->json([
-            'airTemps' => $this->airTempService->fetchAirTempByStation('S109'), // Ang Mo Kio Avenue 5
+            'airTemp' => $this->airTempService->fetchAirTempByStation('S109'), // Ang Mo Kio Avenue 5
             'psi' => $this->psiService->fetchLastPSI()
         ]);
     }
