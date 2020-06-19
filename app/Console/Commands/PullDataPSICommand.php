@@ -66,15 +66,6 @@ class PullDataPSICommand extends Command
         ];
 
         $psis = $dataPSI['items'];
-        // Update last time
-        LastUpdate::updateOrCreate(
-            [
-                'type' => LastUpdate::PSIType,
-            ],
-            [
-                'time' => new Carbon($psis[0]['timestamp']),
-            ]
-        );
 
         foreach ($psis as $psi) {
             foreach ($types as $type) {
@@ -93,5 +84,15 @@ class PullDataPSICommand extends Command
                 }
             }
         }
+
+        // Update last time
+        LastUpdate::updateOrCreate(
+            [
+                'type' => LastUpdate::PSIType,
+            ],
+            [
+                'time' => new Carbon($psis[0]['timestamp']),
+            ]
+        );
     }
 }

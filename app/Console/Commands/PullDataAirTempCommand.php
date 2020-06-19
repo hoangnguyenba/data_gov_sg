@@ -56,15 +56,6 @@ class PullDataAirTempCommand extends Command
         $dataAT = $this->pullDataService->fetchAirTemperature();
 
         $items = $dataAT['items'];
-        // Update last time
-        LastUpdate::updateOrCreate(
-            [
-                'type' => LastUpdate::AirTempType,
-            ],
-            [
-                'time' => new Carbon($items[0]['timestamp']),
-            ]
-        );
 
         foreach ($items as $item) {
             $readings = $item['readings'];
@@ -80,5 +71,15 @@ class PullDataAirTempCommand extends Command
                 );
             }
         }
+
+        // Update last time
+        LastUpdate::updateOrCreate(
+            [
+                'type' => LastUpdate::AirTempType,
+            ],
+            [
+                'time' => new Carbon($items[0]['timestamp']),
+            ]
+        );
     }
 }
