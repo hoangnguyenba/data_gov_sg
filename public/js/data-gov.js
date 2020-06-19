@@ -3,11 +3,13 @@ String.prototype.capitalize = function() {
 }
 
 function updateTemp(airTemp) {
+    if (!airTemp) return;
     $('#tempTime').html(airTemp.timestamp);
     $('#tempDegree').html(airTemp.value + ' Degree');
 }
 
 function updatePSI(psi) {
+    if (!psi) return;
     let html = '';
 
     ['national', 'north', 'south', 'east','west'].forEach(region => {

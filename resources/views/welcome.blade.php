@@ -60,46 +60,6 @@
                                 </tr>
                               </thead>
                               <tbody id="psiTableBody">
-                                <tr class="alert">
-                                  <td>National</td>
-                                  <td>26</td>
-                                  <td>17</td>
-                                  <td>100</td>
-                                  <td>80</td>
-                                  <td>15</td>
-                                </tr>
-                                <tr> 
-                                  <td>North</td>
-                                  <td>26</td>
-                                  <td>17</td>
-                                  <td>100</td>
-                                  <td>80</td>
-                                  <td>15</td>
-                                </tr>
-                                <tr> 
-                                  <td>South</td>
-                                  <td>26</td>
-                                  <td>17</td>
-                                  <td>100</td>
-                                  <td>80</td>
-                                  <td>15</td>
-                                </tr>
-                                <tr> 
-                                  <td>East</td>
-                                  <td>26</td>
-                                  <td>17</td>
-                                  <td>100</td>
-                                  <td>80</td>
-                                  <td>15</td>
-                                </tr>
-                                <tr> 
-                                  <td>West</td>
-                                  <td>26</td>
-                                  <td>17</td>
-                                  <td>100</td>
-                                  <td>80</td>
-                                  <td>15</td>
-                                </tr>
                               </tbody>
                             </table>
                           </div>
@@ -120,11 +80,11 @@
                                       </li>
                                       <li><b>Time Stamp</b>
                                       </li>
-                                      <li id="tempTime">2020 06 08 01:02:00
+                                      <li id="tempTime">~
                                       </li>
                                       <li><b>Air Temperature</b>
                                       </li>
-                                      <li id="tempDegree">30 Degree</a>
+                                      <li id="tempDegree">~ Degree</a>
                                       </li>
                                     </ul>
                                 </ul>
