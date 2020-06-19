@@ -18,6 +18,10 @@ php artisan migrate:install
 ```
 php artisan migrate
 ```
+- run db seed for add master data
+```
+php artisan db:seed
+```
 - config cronjob in your system
 ```
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
