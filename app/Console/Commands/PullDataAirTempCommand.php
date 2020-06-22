@@ -69,17 +69,17 @@ class PullDataAirTempCommand extends Command
                         'value' => $at['value'],
                     ]
                 );
+                // Update last time
+                LastUpdate::updateOrCreate(
+                    [
+                        'type' => LastUpdate::AirTempType,
+                        'key' => $at['station_id']
+                    ],
+                    [
+                        'time' => new Carbon($item['timestamp']),
+                    ]
+                );
             }
         }
-
-        // Update last time
-        LastUpdate::updateOrCreate(
-            [
-                'type' => LastUpdate::AirTempType,
-            ],
-            [
-                'time' => new Carbon($items[0]['timestamp']),
-            ]
-        );
     }
 }

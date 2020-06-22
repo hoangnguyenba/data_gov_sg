@@ -16,6 +16,6 @@ class LastUpdate extends Model
     * @var array
     */
    protected $fillable = [
-       'type', 'time'
+       'type', 'time', 'key'
    ];
 }
